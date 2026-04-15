@@ -1,0 +1,47 @@
+# Environment and configuration
+config/database.php
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.project
+.settings/
+.buildpath
+nbproject/
+
+# Dependency directories
+node_modules/
+vendor/
+composer.lock
+
+# Log files
+*.log
+logs/
+
+# Uploaded files
+uploads/
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+tmp/
+temp/
+
+# PHP specific
+*.php~
