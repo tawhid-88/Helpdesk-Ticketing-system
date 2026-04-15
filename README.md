@@ -53,10 +53,8 @@ Project-cse311/
 |-- sql/
 |   |-- schema.sql              # Database schema
 |   |-- sample.sql                # Sample data for testing
-|-- docs/
-|   |-- database_schema.md      # Database documentation
+|-- erd/
 |   |-- database_erd.drawio     # Entity relationship diagram
-|   |-- project_plan.md         # Project planning document
 ```
 
 ## Prerequisites
@@ -83,7 +81,7 @@ Project-cse311/
    - Update the database host, name, username, and password to match your local setup.
 
 4. **Run the application:**
-   - Open a browser and go to `http://localhost/Project-cse311`.
+   - Open a browser and go to `http://localhost/Helpdesk-Ticketing-system`.
 
 ## User Roles
 
