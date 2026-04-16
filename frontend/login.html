@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NSU Helpdesk Ticketing System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h1>NSU Helpdesk Ticketing System</h1>
+        <p class="subtitle">Sign in to your NSU account</p>
+
+        <!-- Error alert (hidden by default, shown on validation failure) -->
+        <!-- <div class="alert alert-danger">Please fill in all fields.</div> -->
+
+        <!-- Flash message (shown after redirect, e.g. registration success) -->
+        <!-- <div class="alert alert-success">Registration successful! Please log in.</div> -->
+
+        <form method="POST" action="#">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control"
+                       value="" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p style="text-align:center; margin-top:1rem; font-size:0.85rem; color:#888;">
+            Don't have an account? <a href="register.html">Register here</a>
+        </p>
+    </div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

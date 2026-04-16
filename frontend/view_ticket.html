@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSU Helpdesk Ticketing System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="dashboard.html">NSU Helpdesk Ticketing System</a>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="create_ticket.html">New Ticket</a>
+            <a href="manage_tickets.html">Manage</a>
+            <a href="categories.html">Categories</a>
+            <a href="manage_users.html">Users</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html" class="nav-logout">Logout</a>
+        </div>
+        <div class="nav-user">
+            <span>Admin User</span>
+            <span class="badge role-badge">Staff</span>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- Ticket Detail Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Ticket #1: Cannot access WiFi in NAC building</h2>
+                <a href="dashboard.html" class="btn btn-secondary btn-sm">Back</a>
+            </div>
+
+            <div class="ticket-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Status</span>
+                    <span class="badge" style="background:#28a745;">Open</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Priority</span>
+                    <span class="badge" style="background:#dc3545;">High</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Category</span>
+                    Network Issues
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Created By</span>
+                    Rafiq Ahmed
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Assigned To</span>
+                    Admin User
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Created</span>
+                    2026-04-16 08:30:00
+                </div>
+            </div>
+
+            <div style="margin-bottom:1.5rem; line-height:1.7;">
+                I have been unable to connect to the university WiFi network (NSU_Student) since this morning.
+                I am in the NAC building, 6th floor. I have tried restarting my laptop and forgetting the network,
+                but I keep getting an "Authentication failed" error.<br><br>
+                My student ID is 2012345678. Please help resolve this as I have an assignment deadline today.
+            </div>
+
+            <h3 style="font-size:0.95rem; color:#8ab4f8; margin-bottom:0.5rem;">Attachments</h3>
+            <ul class="attachment-list">
+                <li><a href="#" target="_blank">wifi_error_screenshot.png</a></li>
+            </ul>
+        </div>
+
+        <!-- Staff Actions -->
+        <div class="card">
+            <div class="card-header"><h2>Actions</h2></div>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <form method="POST" style="display:flex; gap:0.5rem; align-items:flex-end;">
+                    <input type="hidden" name="action" value="update_status">
+                    <div class="form-group">
+                        <label>Update Status</label>
+                        <select name="status" class="form-control">
+                            <option value="open" selected>Open</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-sm">Update</button>
+                </form>
+
+                <form method="POST" style="display:flex; gap:0.5rem; align-items:flex-end;">
+                    <input type="hidden" name="action" value="assign">
+                    <div class="form-group">
+                        <label>Assign Staff</label>
+                        <select name="staff_id" class="form-control">
+                            <option value="0">Unassigned</option>
+                            <option value="1" selected>Admin User</option>
+                            <option value="6">Mehedi Hasan</option>
+                            <option value="7">Fariha Khan</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-sm">Assign</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="card">
+            <div class="card-header"><h2>Comments (2)</h2></div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="author">Admin User</span>
+                    (Staff)
+                    </span>
+                    <span>1 hour ago</span>
+                </div>
+                <div>Hi Rafiq, we are looking into the WiFi issue in the NAC building. Our network team has been notified. Please try connecting to the NSU_Guest network in the meantime.</div>
+            </div>
+
+            <div class="comment internal">
+                <div class="comment-header">
+                    <span><span class="author">Mehedi Hasan</span>
+                    (Staff)
+                    <span class="badge" style="background:#ffc107; color:#000; font-size:0.65rem;">Internal</span>
+                    </span>
+                    <span>45 minutes ago</span>
+                </div>
+                <div>Checked with network ops - the access point on NAC 6th floor needs a firmware update. Scheduling it for tonight.</div>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data" style="margin-top:1rem;">
+                <input type="hidden" name="action" value="comment">
+                <div class="form-group">
+                    <label>Add Comment</label>
+                    <textarea name="body" class="form-control" rows="3" placeholder="Write your reply..." required></textarea>
+                </div>
+                <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+                    <div class="form-group" style="flex:1; min-width:200px;">
+                        <input type="file" name="attachment" class="form-control">
+                    </div>
+                    <label style="font-size:0.85rem; color:#aaa; cursor:pointer;">
+                        <input type="checkbox" name="is_internal" value="1"> Internal note
+                    </label>
+                    <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- History -->
+        <div class="card">
+            <div class="card-header"><h2>History</h2></div>
+            <div class="history-item">
+                <strong>Admin User</strong> changed
+                <em>assigned_staff</em>
+                from "Unassigned"
+                to "Admin User"
+                -- 1 hour ago
+            </div>
+            <div class="history-item">
+                <strong>System</strong> changed
+                <em>status</em>
+                from ""
+                to "open"
+                -- 2 hours ago
+            </div>
+        </div>
+
+    </main>
+    <footer class="footer">
+        <p>NSU Helpdesk Ticketing System v1.0.0</p>
+    </footer>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

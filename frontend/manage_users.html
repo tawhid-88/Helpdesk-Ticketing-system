@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSU Helpdesk Ticketing System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="dashboard.html">NSU Helpdesk Ticketing System</a>
+        </div>
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="create_ticket.html">New Ticket</a>
+            <a href="manage_tickets.html">Manage</a>
+            <a href="categories.html">Categories</a>
+            <a href="manage_users.html" class="active">Users</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html" class="nav-logout">Logout</a>
+        </div>
+        <div class="nav-user">
+            <span>Admin User</span>
+            <span class="badge role-badge">Staff</span>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- User Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Faculty</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Staff</div>
+            </div>
+        </div>
+
+        <!-- Create User Form -->
+        <div class="card">
+            <div class="card-header"><h2>Create New User</h2></div>
+
+            <form method="POST" action="#" style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:flex-end;">
+                <input type="hidden" name="action" value="create">
+                <div class="form-group" style="flex:1; min-width:160px;">
+                    <label for="create-name">Full Name</label>
+                    <input type="text" id="create-name" name="name" class="form-control" placeholder="Full Name" required>
+                </div>
+                <div class="form-group" style="flex:1.5; min-width:200px;">
+                    <label for="create-email">Email</label>
+                    <input type="email" id="create-email" name="email" class="form-control" placeholder="user@northsouth.edu" required>
+                </div>
+                <div class="form-group" style="flex:1; min-width:140px;">
+                    <label for="create-password">Password</label>
+                    <input type="password" id="create-password" name="password" class="form-control" placeholder="Min 6 chars" required>
+                </div>
+                <div class="form-group" style="min-width:120px;">
+                    <label for="create-role">Role</label>
+                    <select id="create-role" name="role" class="form-control">
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="staff">Staff</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm">Create User</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- User List -->
+        <div class="card">
+            <div class="card-header">
+                <h2>All Users <span style="font-size:0.8rem; color:#888; font-weight:400;">(12 total)</span></h2>
+            </div>
+
+            <!-- Filters -->
+            <form method="GET" action="#" class="filters-bar">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" name="search" class="form-control" placeholder="Name or email..."
+                           value="">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select name="role" class="form-control">
+                        <option value="">All Roles</option>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="staff">Staff</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
+                </div>
+            </form>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Admin User</td>
+                            <td>admin@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#e94560;">Staff</span>
+                            </td>
+                            <td>3 months ago</td>
+                            <td>
+                                <span style="color:#555; font-size:0.8rem;">You</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Rafiq Ahmed</td>
+                            <td>rafiq.ahmed@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#17a2b8;">Student</span>
+                            </td>
+                            <td>2 months ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="2">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Rafiq Ahmed'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sadia Islam</td>
+                            <td>sadia.islam@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#17a2b8;">Student</span>
+                            </td>
+                            <td>2 months ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="3">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Sadia Islam'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Tanvir Hossain</td>
+                            <td>tanvir.hossain@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#17a2b8;">Student</span>
+                            </td>
+                            <td>1 month ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="4">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Tanvir Hossain'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Dr. Nusrat Jahan</td>
+                            <td>nusrat.jahan@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#ffc107;">Faculty</span>
+                            </td>
+                            <td>2 months ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="5">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Dr. Nusrat Jahan'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Mehedi Hasan</td>
+                            <td>mehedi.hasan@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#e94560;">Staff</span>
+                            </td>
+                            <td>3 months ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="6">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Mehedi Hasan'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Fariha Khan</td>
+                            <td>fariha.khan@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#e94560;">Staff</span>
+                            </td>
+                            <td>3 months ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="7">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Fariha Khan'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Karim Uddin</td>
+                            <td>karim.uddin@northsouth.edu</td>
+                            <td>
+                                <span class="badge" style="background:#17a2b8;">Student</span>
+                            </td>
+                            <td>3 weeks ago</td>
+                            <td>
+                                <form method="POST" style="display:inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="user_id" value="8">
+                                    <button type="submit" class="btn btn-danger btn-sm" data-confirm="Delete user 'Karim Uddin'? This will also delete all their tickets and comments.">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <span class="current">1</span>
+                <a href="#">2</a>
+            </div>
+        </div>
+
+    </main>
+    <footer class="footer">
+        <p>NSU Helpdesk Ticketing System v1.0.0</p>
+    </footer>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
